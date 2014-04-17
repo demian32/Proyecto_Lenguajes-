@@ -281,6 +281,7 @@ int i=0;
             p.setText(null);
             ru.setText(null);
             im.setText(null);
+            im.setVisible(false);
             
         } catch (Exception ex) {
             Logger.getLogger(Orales.class.getName()).log(Level.SEVERE, null, ex);
@@ -300,6 +301,7 @@ int i=0;
             String r=chooser.getSelectedFile().getPath();
             ru.setText(r);
             p.setText(u);
+            im.setVisible(true);
             im.setIcon(new ImageIcon(r));
             ImageIcon icon=new ImageIcon(r);
             Image img=icon.getImage();
