@@ -6,8 +6,11 @@
 
 package proyectito;
 
+import java.awt.Image;
 import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 
 /**
  *
@@ -35,6 +38,8 @@ public class Orales extends javax.swing.JFrame {
         guardarimagen = new javax.swing.JPanel();
         buscar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        p = new javax.swing.JTextField();
+        im = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,26 +55,47 @@ public class Orales extends javax.swing.JFrame {
 
         jButton2.setText("jButton2");
 
+        p.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout guardarimagenLayout = new javax.swing.GroupLayout(guardarimagen);
         guardarimagen.setLayout(guardarimagenLayout);
         guardarimagenLayout.setHorizontalGroup(
             guardarimagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, guardarimagenLayout.createSequentialGroup()
-                .addContainerGap(211, Short.MAX_VALUE)
-                .addComponent(buscar)
-                .addGap(27, 27, 27)
-                .addComponent(jButton2)
-                .addGap(19, 19, 19))
+            .addGroup(guardarimagenLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(guardarimagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(guardarimagenLayout.createSequentialGroup()
+                        .addComponent(p, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, guardarimagenLayout.createSequentialGroup()
+                        .addGap(0, 250, Short.MAX_VALUE)
+                        .addGroup(guardarimagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(im, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(guardarimagenLayout.createSequentialGroup()
+                                .addComponent(buscar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2)))
+                        .addGap(30, 30, 30))))
         );
         guardarimagenLayout.setVerticalGroup(
             guardarimagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, guardarimagenLayout.createSequentialGroup()
-                .addContainerGap(238, Short.MAX_VALUE)
+                .addComponent(im, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(p, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
                 .addGroup(guardarimagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buscar)
                     .addComponent(jButton2))
-                .addContainerGap())
+                .addGap(51, 51, 51))
         );
+
+        im.getAccessibleContext().setAccessibleName("");
+        im.getAccessibleContext().setAccessibleDescription("");
 
         jTabbedPane1.addTab("Guardar Imagenes", guardarimagen);
 
@@ -77,11 +103,11 @@ public class Orales extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 395, Short.MAX_VALUE)
+            .addGap(0, 508, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 272, Short.MAX_VALUE)
+            .addGap(0, 331, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab2", jPanel2);
@@ -111,7 +137,19 @@ public class Orales extends javax.swing.JFrame {
             System.out.println("clic en abrir");
             File archivo=chooser.getSelectedFile();
             System.out.println("archivo elegido: "+archivo.getName());
+            String u=archivo.getName();
+            String r=chooser.getSelectedFile().getPath();
+            p.setText(u);
+            im.setIcon(new ImageIcon(r));
+            ImageIcon icon=new ImageIcon(r);
+            Image img=icon.getImage();
+            Image newim=img.getScaledInstance(155, 175, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newico=new ImageIcon(newim);
+            im.setIcon(newico);
+            im.setSize(155, 175);
             
+            
+           
             
         }else {//==JFileChooser.CANCEL_OPTION
         System.out.println("clic en cancelar");
@@ -120,6 +158,10 @@ public class Orales extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_buscarActionPerformed
+
+    private void pActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,8 +201,10 @@ public class Orales extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscar;
     private javax.swing.JPanel guardarimagen;
+    private javax.swing.JLabel im;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField p;
     // End of variables declaration//GEN-END:variables
 }
