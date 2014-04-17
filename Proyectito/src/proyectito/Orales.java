@@ -8,6 +8,8 @@ package proyectito;
 
 import java.awt.Image;
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -40,6 +42,7 @@ public class Orales extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         p = new javax.swing.JTextField();
         im = new javax.swing.JLabel();
+        ru = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,12 +57,20 @@ public class Orales extends javax.swing.JFrame {
         });
 
         jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         p.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pActionPerformed(evt);
             }
         });
+
+        ru.setForeground(java.awt.SystemColor.control);
+        ru.setText("jLabel1");
 
         javax.swing.GroupLayout guardarimagenLayout = new javax.swing.GroupLayout(guardarimagen);
         guardarimagen.setLayout(guardarimagenLayout);
@@ -80,6 +91,9 @@ public class Orales extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton2)))
                         .addGap(30, 30, 30))))
+            .addGroup(guardarimagenLayout.createSequentialGroup()
+                .addComponent(ru)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         guardarimagenLayout.setVerticalGroup(
             guardarimagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,7 +105,8 @@ public class Orales extends javax.swing.JFrame {
                 .addGroup(guardarimagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buscar)
                     .addComponent(jButton2))
-                .addGap(51, 51, 51))
+                .addGap(37, 37, 37)
+                .addComponent(ru))
         );
 
         im.getAccessibleContext().setAccessibleName("");
@@ -139,6 +154,7 @@ public class Orales extends javax.swing.JFrame {
             System.out.println("archivo elegido: "+archivo.getName());
             String u=archivo.getName();
             String r=chooser.getSelectedFile().getPath();
+            ru.setText(r);
             p.setText(u);
             im.setIcon(new ImageIcon(r));
             ImageIcon icon=new ImageIcon(r);
@@ -162,6 +178,20 @@ public class Orales extends javax.swing.JFrame {
     private void pActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            // TODO add your handling code here:
+            
+            
+            GuardarImagen.guardar(new Imagen(p.getText(),ru.getText()));
+            
+            p.setText(null);
+            ru.setText(null);
+        } catch (Exception ex) {
+            Logger.getLogger(Orales.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,5 +236,6 @@ public class Orales extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField p;
+    private javax.swing.JLabel ru;
     // End of variables declaration//GEN-END:variables
 }
