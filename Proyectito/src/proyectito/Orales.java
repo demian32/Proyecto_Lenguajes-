@@ -128,6 +128,18 @@ int i=0;
                 {null, null},
                 {null, null},
                 {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
                 {null, null}
             },
             new String [] {
@@ -136,7 +148,7 @@ int i=0;
         ));
         jScrollPane1.setViewportView(tabla);
 
-        jButton5.setText("jButton5");
+        jButton5.setText("Imagenes");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -196,7 +208,7 @@ int i=0;
                         .addGap(0, 111, Short.MAX_VALUE))))
         );
 
-        jTabbedPane1.addTab("tab3", jPanel1);
+        jTabbedPane1.addTab("Mostrar", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -244,6 +256,7 @@ int i=0;
             p.setText(null);
             ru.setText(null);
             im.setText(null);
+            
         } catch (Exception ex) {
             Logger.getLogger(Orales.class.getName()).log(Level.SEVERE, null, ex);
         }
