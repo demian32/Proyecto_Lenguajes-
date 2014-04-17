@@ -8,6 +8,7 @@ package proyectito;
 
 import java.awt.Image;
 import java.io.File;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -25,6 +26,24 @@ int i=0;
      */
     public Orales() {
         initComponents();
+        Thread t1=new  Thread(new Runnable(){
+            public void run(){
+                while(true){
+                try {
+                    Thread.sleep(1000);
+                    //creamos un objeto de una clase que se llama calendar
+                    Calendar cal=Calendar.getInstance();
+                    int hora=cal.get(Calendar.HOUR);
+                    int min=cal.get(Calendar.MINUTE);
+                    int se=cal.get(Calendar.SECOND);
+                    String time=hora+":"+min+":"+se;
+                    etiqueta.setText(time);
+                    
+                } catch (InterruptedException ex){
+                }}
+            }
+        });
+        t1.start();
     }
 
     /**
@@ -50,6 +69,7 @@ int i=0;
         imr = new javax.swing.JLabel();
         pro = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
+        etiqueta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,7 +109,7 @@ int i=0;
                         .addComponent(p, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, guardarimagenLayout.createSequentialGroup()
-                        .addGap(0, 305, Short.MAX_VALUE)
+                        .addGap(0, 331, Short.MAX_VALUE)
                         .addGroup(guardarimagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(im, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(guardarimagenLayout.createSequentialGroup()
@@ -104,7 +124,7 @@ int i=0;
         guardarimagenLayout.setVerticalGroup(
             guardarimagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, guardarimagenLayout.createSequentialGroup()
-                .addComponent(im, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                .addComponent(im, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(p, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
@@ -188,7 +208,7 @@ int i=0;
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                         .addComponent(jButton6)
                         .addGap(66, 66, 66))))
         );
@@ -205,7 +225,7 @@ int i=0;
                         .addComponent(pro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton6)
-                        .addGap(0, 111, Short.MAX_VALUE))))
+                        .addGap(0, 86, Short.MAX_VALUE))))
         );
 
         jTabbedPane1.addTab("Mostrar", jPanel1);
@@ -214,13 +234,18 @@ int i=0;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 26, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(etiqueta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(213, 213, 213))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(etiqueta, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jTabbedPane1.getAccessibleContext().setAccessibleName("probando");
@@ -341,6 +366,7 @@ int i=0;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscar;
+    private javax.swing.JLabel etiqueta;
     private javax.swing.JPanel guardarimagen;
     private javax.swing.JLabel im;
     private javax.swing.JLabel imr;
