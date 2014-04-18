@@ -109,7 +109,7 @@ public class inicio extends javax.swing.JFrame {
             probando.setText(e.getMessage());
             dispose();
         }catch(Exception algo){
-            probando.setText(algo.getMessage());
+            probando.setText("solo letras baboso");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
